@@ -1,69 +1,98 @@
-import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import CanvasSequence from "@/components/CanvasSequence";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="relative bg-[#050505] min-h-screen text-white font-sans selection:bg-[#0050ff] selection:text-white">
+      <Navbar />
+      
+      {/* Container that provides scroll height */}
+      <div className="relative h-[400vh]">
+        {/* Sticky Canvas background */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
+          <CanvasSequence />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Scrollable Content Overlay */}
+        <div className="relative z-10 h-full w-full pointer-events-none">
+          
+          {/* Section 1: Hero (0-15%) */}
+          <section className="h-[100vh] flex flex-col items-center justify-end pb-32 px-6">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-center">
+              Sony WH-1000XM6
+            </h1>
+            <h2 className="text-2xl md:text-3xl text-white/90 font-medium mb-4 text-center">
+              Silence, perfected.
+            </h2>
+            <p className="text-white/60 max-w-lg text-center text-lg">
+              Flagship wireless noise cancelling, re-engineered for a world that never stops.
+            </p>
+          </section>
+
+          {/* Section 2: Engineering Reveal (15-40%) */}
+          <section className="h-[100vh] flex flex-col items-start justify-center px-6 md:px-24">
+            <div className="max-w-md pointer-events-auto bg-[#050505]/40 backdrop-blur-md p-8 rounded-2xl border border-white/5 shadow-2xl">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-[#00d6ff]/80 pb-2">
+                Precision-engineered<br />for silence.
+              </h2>
+              <p className="text-white/60 text-lg mb-4">
+                Custom drivers, sealed acoustic chambers, and optimized airflow deliver studio-grade clarity.
+              </p>
+              <p className="text-white/60 text-lg">
+                Every component is tuned for balance, power, and comfort—hour after hour.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 3 & 4: Noise Cancelling & Sound (40-85%) */}
+          <section className="h-[150vh] flex flex-col items-end justify-center px-6 md:px-24">
+            <div className="max-w-md pointer-events-auto text-right bg-[#050505]/40 backdrop-blur-md p-8 rounded-2xl border border-white/5 shadow-2xl mb-32">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-[#0050ff]/80 pb-2">
+                Adaptive noise<br />cancelling, redefined.
+              </h2>
+              <ul className="text-white/60 text-lg space-y-4">
+                <li>Multi-microphone array listens in every direction.</li>
+                <li>Real-time noise analysis adjusts to your environment.</li>
+                <li>Your music stays pure—planes, trains, and crowds fade away.</li>
+              </ul>
+            </div>
+            
+            <div className="max-w-md pointer-events-auto text-left w-full self-start bg-[#050505]/40 backdrop-blur-md p-8 rounded-2xl border border-white/5 shadow-2xl mt-32">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-[#00d6ff]/80 pb-2">
+                Immersive,<br />lifelike sound.
+              </h2>
+              <p className="text-white/60 text-lg mb-4">
+                High-performance drivers unlock detail, depth, and texture in every track.
+              </p>
+              <p className="text-white/60 text-lg">
+                AI-enhanced upscaling restores clarity to compressed audio, so every note feels alive.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 5: Reassembly & CTA (85-100%) */}
+          <section className="h-[50vh] flex flex-col items-center justify-end pb-24 px-6">
+            <div className="pointer-events-auto text-center bg-[#050505]/40 backdrop-blur-xl p-12 rounded-3xl border border-white/5 shadow-[0_0_50px_rgba(0,80,255,0.05)]">
+              <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-white/90">
+                Hear everything.<br />Feel nothing else.
+              </h2>
+              <p className="text-xl text-white/60 mb-10 max-w-xl mx-auto">
+                WH-1000XM6. Designed for focus, crafted for comfort. Engineered for airports, offices, and everything in between.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <button className="px-8 py-4 bg-gradient-to-r from-[#0050ff] to-[#00d6ff] text-white rounded-full font-semibold text-lg hover:shadow-[0_0_30px_rgba(0,80,255,0.4)] transition-all transform hover:scale-105">
+                  Experience WH-1000XM6
+                </button>
+                <button className="px-8 py-4 text-white/80 hover:text-white font-medium underline underline-offset-4 decoration-white/30 hover:decoration-white transition-all">
+                  See full specs
+                </button>
+              </div>
+            </div>
+          </section>
+          
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
