@@ -19,7 +19,7 @@ export default function CanvasSequence() {
     for (let i = 1; i <= TOTAL_FRAMES; i++) {
       const img = new Image();
       const frameNum = i.toString().padStart(3, '0');
-      img.src = `/sequence/ezgif-frame-${frameNum}.jpg`;
+      img.src = `/sequence/frame_${frameNum}.png`;
       
       img.onload = () => {
         loaded++;
@@ -53,9 +53,9 @@ export default function CanvasSequence() {
     ctx.fillStyle = "#050505"; // Match background
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // We want to crop the top and bottom to hide the editor UI and Gemini watermark
-    const CROP_TOP_PERCENT = 0.12;    // Crop 12% from top
-    const CROP_BOTTOM_PERCENT = 0.12; // Crop 12% from bottom
+    // No cropping — display the full frame
+    const CROP_TOP_PERCENT = 0;
+    const CROP_BOTTOM_PERCENT = 0;
     
     const sx = 0;
     const sy = img.height * CROP_TOP_PERCENT;
